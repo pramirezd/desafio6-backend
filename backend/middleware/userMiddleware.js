@@ -11,7 +11,7 @@ export const validateCredentials = async (req, res, next) => {
         if (!email || !password) {
             return res.status(400).json({ message: 'Email and password are required' });
         }
-        const user = await userModel.validateUserEmail(email);
+        const user = await userModel.getUser(email);
         if (!user) {
             return res.status(400).json({ message: 'Email not found in database' });
         }
